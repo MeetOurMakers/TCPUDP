@@ -32,6 +32,7 @@ public class UDPServer {
 			String receivedStr = null;
 			String reply = null;
 			boolean flag = true;
+			System.out.println("UDPServer start!");
 			while (flag) {// receive the message from client
 				mDs.receive(mDpreceive);
 				SupTools.showMeswithTime("server received data from client:");

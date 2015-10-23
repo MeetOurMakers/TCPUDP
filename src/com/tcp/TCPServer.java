@@ -30,6 +30,7 @@ public class TCPServer {
 		DataOutputStream out = null;// the stream used to send message
 		try {
 			mServer = new ServerSocket(TCP_PORT);// listen on the port
+			System.out.println("TCPServer start!");
 			while (true) {
 				mSocket = mServer.accept();// once connented show message and
 											// initialize streams
