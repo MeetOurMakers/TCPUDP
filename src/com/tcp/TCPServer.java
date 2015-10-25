@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.util.HashMap;
 
@@ -40,7 +41,13 @@ public class TCPServer {
 				String str = null;
 				String reply = null;
 				while (flag) {
-					str = in.readUTF();// receive and decode message
+					try {
+						str = in.readUTF();// receive and decode message
+					} catch (SocketException e) {// if the client is terminated
+						flag = false;
+						SupTools.showMeswithTime("Connection reset");
+						break;
+					}
 					if (str == null || str.equals("")) {// when empty message is
 														// sent, terminate connection
 						flag = false;

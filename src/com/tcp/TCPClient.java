@@ -58,9 +58,9 @@ public class TCPClient {
 		} catch (SocketTimeoutException e) {//if timeout then print this line
 			System.out.println("Time out, no response.");
 		} catch (EOFException e){
-			System.out.print("Connection shut down. Maybe the server crashed.");
+			System.out.println("Connection shut down. Maybe the server crashed.");
 		} catch (SocketException e) {
-			e.printStackTrace();
+			System.out.println("Connection reset!");
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
