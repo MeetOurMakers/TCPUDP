@@ -12,7 +12,6 @@ import com.tools.SupTools;
  * 
  * TCPServer
  * 
- * @author Fengyuan Zhang
  * 
  */
 public class UDPServer {

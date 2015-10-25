@@ -13,6 +13,11 @@ import java.net.UnknownHostException;
 
 import com.tools.SupTools;
 
+/**
+ * 
+ * TCPClient
+ * 
+ */
 public class TCPClient {
 	/* the name of server */
 	private final static String SERVER_NAME = "localhost";
@@ -33,6 +38,9 @@ public class TCPClient {
 			out = new DataOutputStream(mSocket.getOutputStream());
 			mBrsend = new BufferedReader(new InputStreamReader(System.in));//wait for your order
 			System.out.println("Connection established:");
+			SupTools.showInstruction();
+			System.out.println("bye : terminate the connection with server");
+			System.out.println("you are not allowed to send an empty message or the connection will be reset");
 			boolean flag = true;
 			while (flag) {
 				System.out.println("Please input your command:");
@@ -42,6 +50,8 @@ public class TCPClient {
 					flag = false;
 				} else {
 					String reply = in.readUTF();//receive and decode the reply
+					SupTools.showMeswithTime("client received data from server:" + " from "
+							+ mSocket.getInetAddress() + ":" + mSocket.getPort());
 					SupTools.showMeswithTime(reply);
 				}
 			}

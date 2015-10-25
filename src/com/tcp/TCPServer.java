@@ -14,7 +14,6 @@ import com.tools.SupTools;
  * 
  * TCPServer
  * 
- * @author Fengyuan Zhang
  * 
  */
 public class TCPServer {
@@ -37,7 +36,6 @@ public class TCPServer {
 				SupTools.showMeswithTime("connect to client success!");
 				in = new DataInputStream(mSocket.getInputStream());
 				out = new DataOutputStream(mSocket.getOutputStream());
-//				out.writeUTF("hello");
 				boolean flag = true;
 				String str = null;
 				String reply = null;

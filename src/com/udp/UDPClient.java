@@ -6,16 +6,12 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import com.tools.SupTools;
 
 /**
  * 
- * TCPServer
+ * UDPClient
  * 
- * @author Fengyuan Zhang
  * 
  */
 public class UDPClient {
@@ -32,6 +28,7 @@ public class UDPClient {
 		DatagramSocket mDs = null;// client socket
 		DatagramPacket mDpsend = null;// packet to send order
 		DatagramPacket mDpreceive = null;// packet to get reply
+		SupTools.showInstruction();
 		try {
 			byte[] bsend = new byte[1024];
 			byte[] breceive = new byte[1024];
@@ -49,8 +46,6 @@ public class UDPClient {
 					mDs.send(mDpsend);
 					try {
 						mDs.receive(mDpreceive);
-						System.out.println("loc = "+loc);
-						System.out.println("getaddress = "+mDpreceive.getAddress().toString());
 						if (!mDpreceive.getAddress().equals(loc)) {// if reply is not from the
 																	// server,throw out exception
 							throw new IOException("Received packet from an umknown source");

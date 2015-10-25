@@ -91,4 +91,13 @@ public class SupTools {
 		String date = df.format(new Date());
 		System.out.println(date+" : "+str);
 	}
+	/**
+	 * To show the command format you will use
+	 *@author Fengyuan Zhang
+	*/
+	public static void showInstruction(){
+		System.out.println("put key value : put operation");
+		System.out.println("get key : get the value of this key");
+		System.out.println("delete key : delete this key-value pairs");
+	}
 }
