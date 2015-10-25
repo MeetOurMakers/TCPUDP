@@ -49,6 +49,8 @@ public class UDPClient {
 					mDs.send(mDpsend);
 					try {
 						mDs.receive(mDpreceive);
+						System.out.println("loc = "+loc);
+						System.out.println("getaddress = "+mDpreceive.getAddress().toString());
 						if (!mDpreceive.getAddress().equals(loc)) {// if reply is not from the
 																	// server,throw out exception
 							throw new IOException("Received packet from an umknown source");

@@ -35,11 +35,14 @@ public class UDPServer {
 			System.out.println("UDPServer start!");
 			while (flag) {// receive the message from client
 				mDs.receive(mDpreceive);
-				SupTools.showMeswithTime("server received data from client:");
+				SupTools.showMeswithTime("server received client data from " + mDpreceive.getAddress().toString()
+						+ ":" + mDpreceive.getPort());
 				receivedStr = new String(mDpreceive.getData(), 0, mDpreceive.getLength());
 				SupTools.showMeswithTime(receivedStr);
-				reply = SupTools.executeOrder(receivedStr, map);// execute the order and
-																// generate reply
+				reply = SupTools.executeOrder(receivedStr, map);// execute the
+																// order and
+																// generate
+																// reply
 				mDpsend = new DatagramPacket(reply.getBytes(), reply.length(), mDpreceive.getAddress(),
 						mDpreceive.getPort());
 				mDs.send(mDpsend);// send the reply
@@ -52,7 +55,7 @@ public class UDPServer {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} 
+		}
 	}
 
 }

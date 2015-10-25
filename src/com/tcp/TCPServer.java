@@ -47,12 +47,15 @@ public class TCPServer {
 														// sent, terminate connection
 						flag = false;
 						reply = "connection terminated!";
+						SupTools.showMeswithTime("Goodbye!client terminated!");
 					} else if (str.equals("bye")) {// when the client want to
 													// close connection, notice it
 						flag = false;
 						reply = "connection terminated!";
 						SupTools.showMeswithTime("Goodbye!client terminated!");
 					} else {
+						SupTools.showMeswithTime("server received client data from " + mSocket.getInetAddress().toString()
+								+ ":" + mSocket.getPort());
 						reply = SupTools.executeOrder(str, map);// execute the
 																// order from client
 						SupTools.showMeswithTime(str);

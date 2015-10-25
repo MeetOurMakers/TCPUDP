@@ -3,6 +3,7 @@ package com.tcp;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
@@ -37,7 +38,7 @@ public class TCPClient {
 				System.out.println("Please input your command:");
 				String str = mBrsend.readLine();
 				out.writeUTF(str);//encode and send message
-				if ("bye".equals(str)) {//if you send "bye", you will end the connection
+				if ("bye".equals(str) || str==null || str.equals("")) {//if you send "bye", you will end the connection
 					flag = false;
 				} else {
 					String reply = in.readUTF();//receive and decode the reply
@@ -46,6 +47,8 @@ public class TCPClient {
 			}
 		} catch (SocketTimeoutException e) {//if timeout then print this line
 			System.out.println("Time out, no response.");
+		} catch (EOFException e){
+			System.out.print("Connection shut down. Maybe the server crashed.");
 		} catch (SocketException e) {
 			e.printStackTrace();
 		} catch (UnknownHostException e) {
